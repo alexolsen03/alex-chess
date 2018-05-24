@@ -1,0 +1,27 @@
+.square {
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  background-color: #eaeaea;
+  box-sizing: content-box;
+}
+
+.black {
+  background-color: #333;
+}
+
+/* .top {
+  border-top: 1px solid #aaa;
+}
+
+.btm {
+  border-bottom: 1px solid #aaa;
+} */
+
+/* .left {
+  border-left: 1px solid #aaa;
+}
+
+.right {
+  border-right: 1px solid #aaa;
+} */

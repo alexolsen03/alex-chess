@@ -1,0 +1,19 @@
+.rank {
+  font-size: 0px;
+}
+
+.rank div:nth-child(1) {
+  border-left: 1px solid #aaa;
+}
+
+.rank div:nth-child(8) {
+  border-right: 1px solid #aaa;
+}
+
+.rank:nth-child(1) div {
+  border-top: 1px solid #aaa;
+}
+
+.rank:nth-child(8) div {
+  border-bottom: 1px solid #aaa;
+}
