@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Square } from './../';
 import * as styles from './Rank.css';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 class Rank extends Component {
 
   constructor(props) {
     super(props);
+
+    console.log('rank props', props);
   }
 
   render() {
@@ -18,11 +22,9 @@ class Rank extends Component {
     const squares = [...Array(spaceCt)].map((_, i) => {
       return <Square key={i}
                     isBlack={i % 2 ? offset : !offset}
-                    isLeft={i==0}
-                    isRight={i==spaceCt - 1}
-                    isTop={rank == "1"}
-                    isBtm={rank == "8"}
-             />
+                    occupier="bB"
+                    rank={rank}
+                    file={i + 1} />
     });
 
     return (
@@ -38,4 +40,11 @@ Rank.propTypes = {
   offset: PropTypes.bool
 }
 
-export default Rank;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    board: state.board
+  };
+};
+
+export default connect(mapStateToProps)(Rank);
