@@ -1,7 +1,7 @@
 const InitialState =
 {
   board: {
-    'a1': 'bB'
+    'a1': 'wR'
   }
 };
 

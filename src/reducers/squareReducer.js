@@ -1,8 +1,5 @@
-import rootReducer from '../reducers';
-import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import * as SquareActionTypes from '../actions/SquareActionTypes';
 
-// console.log(InitialState);
 const startingState = {
   board: {
     a1: 'wR', b1: 'wN', c1: 'wB', d1: 'wQ', e1: 'wK', f1: 'wB', g1: 'wN', h1: 'wR',
@@ -13,9 +10,14 @@ const startingState = {
   activeSquare: ''
 }
 
-export default (initialState = { }) => {
-  return createStore(rootReducer, initialState, compose(
-      applyMiddleware(thunk),
-      window.devToolsExtension ? window.devToolsExtension() : f => f
-    ));
+export default (state = startingState, action) => {
+  console.log(state);
+  switch (action.type) {
+    case SquareActionTypes.ACTIVATE:
+      console.log('activate bro', action)
+      return Object.assign({}, state, { activeSquare: action.activeSquare });
+
+    default:
+      return state;
+  }
 };

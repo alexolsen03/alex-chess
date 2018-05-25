@@ -14,7 +14,19 @@ import wQ from './../../static/wQ.png';
 import wR from './../../static/wR.png';
 
 const PIECES = {
-  "bB": bB
+  "bK": bK,
+  "bQ": bQ,
+  "bN": bN,
+  "bB": bB,
+  "bP": bP,
+  "bR": bR,
+
+  "wK": bK,
+  "wQ": wQ,
+  "wN": wN,
+  "wB": wB,
+  "wP": wP,
+  "wR": wR,
 }
 
 const Piece = ({piece}) => (

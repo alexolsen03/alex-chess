@@ -6,6 +6,10 @@
   box-sizing: content-box;
 }
 
+.square.active {
+  background-color: yellow;
+}
+
 .black {
   background-color: #333;
 }

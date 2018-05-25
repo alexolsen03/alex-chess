@@ -14,9 +14,11 @@ class App extends Component {
     console.log(this.props);
 
     let offset = false;
+    let n=8;
     const ranks = [...Array(8)].map((_, i) => {
       offset = !offset;
-      return <Rank key={i} rank={i+1} offset={offset} board={this.props.board}/>
+      n--;
+      return <Rank key={i} rank={n+1} offset={offset} board={this.props.board}/>
     })
 
     return (
