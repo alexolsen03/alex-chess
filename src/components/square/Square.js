@@ -8,11 +8,35 @@ class Square extends Component {
     super(props);
   }
 
-  toggleClass = () => {
-    const coord = `${this.props.file}${this.props.rank}`;
-    if (this.props.occupier) {
-      this.props.actions.setActiveSquare(coord);
+  toggleActiveSquare = () => {
+    let {occupier, isActive, actions, file, rank, activeSquare, board} = this.props;
+
+    const coord = `${file}${rank}`;
+
+    // activate this square if nothing is active and it has a piece
+    if (!isActive && !activeSquare && occupier) {
+      actions.squareActions.setActiveSquare(coord);
+      return;
     }
+
+    // toggle this square
+    if (isActive) {
+      actions.squareActions.setActiveSquare(''); // unselect
+      return;
+    }
+
+    // clicked a square while active that is not this one
+    if (!isActive && activeSquare) {
+      if (occupier && occupier.charAt(0) === board[activeSquare].charAt(0)) {
+        console.log(occupier.charAt(0), board[activeSquare].charAt(0));
+        return;
+      }
+
+      actions.boardActions.movePiece(activeSquare, coord, board);
+      actions.squareActions.setActiveSquare(''); // unselect
+      return;
+    }
+
   };
 
   render() {
@@ -20,7 +44,7 @@ class Square extends Component {
 
     return (
       <div className={`square ${isBlack ? 'black' : ''} ${isActive ? 'active' : ''}`}
-           onClick={this.toggleClass}>
+           onClick={this.toggleActiveSquare}>
         { occupier && <Piece piece={occupier}/> }
       </div>
     );

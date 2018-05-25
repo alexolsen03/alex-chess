@@ -21,7 +21,7 @@ const PIECES = {
   "bP": bP,
   "bR": bR,
 
-  "wK": bK,
+  "wK": wK,
   "wQ": wQ,
   "wN": wN,
   "wB": wB,
