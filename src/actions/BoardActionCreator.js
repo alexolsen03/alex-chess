@@ -28,3 +28,17 @@ export const movePiece = (activePiece, toCoord, board) => {
     board: board
   }
 }
+
+export const recordBoardState = (board) => {
+  return {
+    type: BoardActionTypes.RECORD_STATE,
+    snapshot: board
+  }
+}
+
+export const rewind = () => {
+  return {
+    type: BoardActionTypes.REWIND,
+    board: {}
+  }
+}

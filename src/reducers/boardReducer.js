@@ -1,13 +1,22 @@
 import * as BoardActionTypes from '../actions/BoardActionTypes';
 
-export default (state = {}, action) => {
+export default (state = { states: [], viewingIndex: 0, states: [], isPlayable: true }, action) => {
   switch (action.type) {
     case BoardActionTypes.INITIALIZE:
-      console.log('reducing board to', action.board);
-      return Object.assign({}, state, { board: action.board });
+      const copy = Object.assign({}, {}, action.board);
+      return Object.assign({}, state, { board: action.board, states: [copy], viewingIndex: 0, isPlayable: true });
 
     case BoardActionTypes.MOVE_PIECE:
-      return Object.assign({}, state, { board: action.board });
+      let upper = state.viewingIndex + 1;
+      return Object.assign({}, state, { board: action.board, viewingIndex: upper });
+
+    case BoardActionTypes.RECORD_STATE:
+      return { ...state,
+               states: [...state.states, action.snapshot]
+             }
+    case BoardActionTypes.REWIND:
+      let downer = state.viewingIndex - 1;
+      return Object.assign({}, state, {board: state.states[downer], viewingIndex: downer, isPlayable: false });
 
     default:
       return state;

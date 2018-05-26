@@ -9,7 +9,11 @@ class Square extends Component {
   }
 
   toggleActiveSquare = () => {
-    let {occupier, isActive, actions, file, rank, activeSquare, board} = this.props;
+    let {occupier, isActive, actions, file, rank, activeSquare, board, isPlayable} = this.props;
+
+    if (!isPlayable) {
+      return;
+    }
 
     const coord = `${file}${rank}`;
 
@@ -25,15 +29,16 @@ class Square extends Component {
       return;
     }
 
-    // clicked a square while active that is not this one
+    // clicked a square while active that is not the active one
     if (!isActive && activeSquare) {
       if (occupier && occupier.charAt(0) === board[activeSquare].charAt(0)) {
-        console.log(occupier.charAt(0), board[activeSquare].charAt(0));
         return;
       }
 
       actions.boardActions.movePiece(activeSquare, coord, board);
       actions.squareActions.setActiveSquare(''); // unselect
+      actions.boardActions.recordBoardState(Object.assign({}, {}, board));
+      console.log(this.props);
       return;
     }
 

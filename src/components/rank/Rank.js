@@ -10,7 +10,7 @@ class Rank extends Component {
   }
 
   render() {
-    let { offset, rank, activeSquare, actions, board } = this.props;
+    let { offset, rank, activeSquare, actions, board, isPlayable } = this.props;
 
     const fileMap = { 1: 'a', 2: 'b', 3: 'c', 4: 'd',
                       5: 'e', 6: 'f', 7: 'g', 8: 'h'};
@@ -29,6 +29,7 @@ class Rank extends Component {
                     file={file}
                     board={board}
                     activeSquare={activeSquare}
+                    isPlayable={isPlayable}
                     actions={actions}/>
     });
 

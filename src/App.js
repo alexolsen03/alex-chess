@@ -12,16 +12,29 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    console.log(this.props);
+
     this.props.actions.boardActions.initializeBoard();
   }
 
   resetBoard = () => {
-    console.log('boop');
     this.props.actions.boardActions.initializeBoard();
   }
 
+  rewind = () => {
+    if (this.props.board.viewingIndex >= 0) {
+      this.props.actions.boardActions.rewind();
+    }
+  }
+
+  disableRewind = () => {
+    return this.props.board.viewingIndex <= 0;
+  }
+
   render() {
-    let { actions, board, activeSquare } = this.props;
+    let { actions, board, activeSquare, viewingIndex } = this.props;
+
+    let isPlayable = board.isPlayable;
 
     // TODO fix this
     if (board.board) {
@@ -38,13 +51,15 @@ class App extends Component {
                    offset={offset}
                    activeSquare={activeSquare}
                    board={board}
-                   actions={actions}/>
+                   actions={actions}
+                   isPlayable={isPlayable}/>
     });
 
     return (
       <div className="App">
         {ranks}
         <br />
+        <button disabled={this.disableRewind()} onClick={this.rewind}>Rewind</button>
         <button onClick={this.resetBoard}>Reset</button>
       </div>
     );
@@ -54,7 +69,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     board: state.board,
-    activeSquare: state.squares.activeSquare
+    activeSquare: state.squares.activeSquare,
   };
 };
 
