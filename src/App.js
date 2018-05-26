@@ -27,8 +27,22 @@ class App extends Component {
     }
   }
 
+  replay = () => {
+    const { viewingIndex, states } = this.props.board;
+    // plus 1 on viewing index to see if the next index exists
+    if (viewingIndex + 1 <= (states.length - 1)) {
+      const isPlayable = states.length - 1 === viewingIndex + 1;
+
+      this.props.actions.boardActions.replay(isPlayable);
+    }
+  }
+
   disableRewind = () => {
     return this.props.board.viewingIndex <= 0;
+  }
+
+  disableReplay = () => {
+    return (this.props.board.states.length - 1) <= this.props.board.viewingIndex;
   }
 
   render() {
@@ -61,6 +75,7 @@ class App extends Component {
         <br />
         <button disabled={this.disableRewind()} onClick={this.rewind}>Rewind</button>
         <button onClick={this.resetBoard}>Reset</button>
+        <button disabled={this.disableReplay()} onClick={this.replay}>Replay</button>
       </div>
     );
   }

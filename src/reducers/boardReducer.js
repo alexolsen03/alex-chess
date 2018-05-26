@@ -18,6 +18,10 @@ export default (state = { states: [], viewingIndex: 0, states: [], isPlayable: t
       let downer = state.viewingIndex - 1;
       return Object.assign({}, state, {board: state.states[downer], viewingIndex: downer, isPlayable: false });
 
+    case BoardActionTypes.REPLAY:
+      let newViewingIndex = state.viewingIndex + 1;
+      return Object.assign({}, state, { board: state.states[newViewingIndex], viewingIndex: newViewingIndex, isPlayable: action.shouldBePlayable });
+
     default:
       return state;
   }

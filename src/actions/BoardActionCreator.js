@@ -42,3 +42,10 @@ export const rewind = () => {
     board: {}
   }
 }
+
+export const replay = (shouldBePlayable) => {
+  return {
+    type: BoardActionTypes.REPLAY,
+    shouldBePlayable: shouldBePlayable
+  }
+}
