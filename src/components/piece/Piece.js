@@ -1,4 +1,5 @@
 import React from 'react';
+import './Piece.css';
 import bB from './../../static/bB.png';
 import bK from './../../static/bK.png';
 import bN from './../../static/bN.png';
@@ -30,7 +31,7 @@ const PIECES = {
 }
 
 const Piece = ({piece}) => (
-  <img src={PIECES[piece]} />
+  <img className="piece" src={PIECES[piece]} />
 );
 
 export default Piece;
