@@ -17,3 +17,19 @@
 .rank:nth-child(8) div {
   border-bottom: 1px solid #aaa;
 }
+
+.viewing .rank div:nth-child(1) {
+  border-left: 2px solid red;
+}
+
+.viewing .rank div:nth-child(8) {
+  border-right: 2px solid red;
+}
+
+.viewing .rank:nth-child(1) div {
+  border-top: 2px solid red;
+}
+
+.viewing .rank:nth-child(8) div {
+  border-bottom: 2px solid red;
+}

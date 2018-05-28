@@ -7,14 +7,6 @@ class Board extends Component {
   render() {
     let { actions, board, activeSquare, viewingIndex, isPlayable } = this.props;
 
-    console.log('board props', this.props);
-
-    // TODO fix this
-    // if (board.board) {
-    //   console.log('weird board thing');
-    //   board = board.board;
-    // }
-
     let offset = false;
     let n=8;
     const ranks = [...Array(8)].map((_, i) => {

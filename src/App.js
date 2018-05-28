@@ -44,8 +44,8 @@ class App extends Component {
   }
 
   render() {
-    let { actions, board, activeSquare, viewingIndex } = this.props;
-    let isPlayable = board.isPlayable;
+    let { actions, board, activeSquare } = this.props;
+    let { isPlayable, viewingIndex } = board;
 
     // TODO fix this
     if (board.board) {
@@ -60,15 +60,17 @@ class App extends Component {
         return;
       }
 
-      return <Board board={revStates[i]}
-               key={i}
-               activeSquare=''
-               viewingIndex={0}
-               isPlayable={false}
-               actions={null} />
-    });
+      let reversedIndex = Math.abs(viewingIndex - size);
 
-    console.log(history);
+      return <div key={i} className={i + 1 === reversedIndex ? 'viewing' : ''}>
+                <Board board={revStates[i]}
+                   key={i}
+                   activeSquare=''
+                   viewingIndex={0}
+                   isPlayable={false}
+                   actions={null} />
+             </div>
+    });
 
     return (
       <div className="App container">
