@@ -31,7 +31,7 @@ const PIECES = {
 }
 
 const Piece = ({piece}) => (
-  <img className="piece" src={PIECES[piece]} />
+  <img alt={PIECES[piece]} className="piece" src={PIECES[piece]} />
 );
 
 export default Piece;

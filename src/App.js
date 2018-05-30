@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import { Board } from './components';
 import * as SquareActions from './actions/SquareActionCreator';
 import * as BoardActions from './actions/BoardActionCreator';
@@ -55,9 +54,9 @@ class App extends Component {
     let size = this.props.board.states.length;
     const revStates = [...this.props.board.states].reverse();
 
-    const history = [...Array(5)].map((_, i) => {
+    const history = [...Array(3)].map((_, i) => {
       if (revStates.length === 0 || !revStates[i]) {
-        return;
+        return null;
       }
 
       let reversedIndex = Math.abs(viewingIndex - size);
@@ -91,9 +90,9 @@ class App extends Component {
           </div>
         </div>
         <br />
-        <button disabled={this.disableRewind()} onClick={this.rewind}>Rewind</button>
+        <button onClick={this.rewind} disabled={this.disableRewind()} >Rewind</button>
         <button onClick={this.resetBoard}>Reset</button>
-        <button disabled={this.disableReplay()} onClick={this.replay}>Replay</button>
+        <button onClick={this.replay} disabled={this.disableReplay()}>Replay</button>
       </div>
     );
   }

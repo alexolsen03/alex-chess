@@ -1,6 +1,12 @@
 import * as BoardActionTypes from '../actions/BoardActionTypes';
 
-export default (state = { states: [], viewingIndex: 0, states: [], isPlayable: true }, action) => {
+let startingState = { 
+  states: [], 
+  viewingIndex: 0,
+  isPlayable: true 
+}
+
+export default (state = startingState, action) => {
   switch (action.type) {
     case BoardActionTypes.INITIALIZE:
       const copy = Object.assign({}, {}, action.board);

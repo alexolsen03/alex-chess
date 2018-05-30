@@ -5,7 +5,7 @@ import './Board.css';
 class Board extends Component {
 
   render() {
-    let { actions, board, activeSquare, viewingIndex, isPlayable } = this.props;
+    let { actions, board, activeSquare, isPlayable } = this.props;
 
     let offset = false;
     let n=8;

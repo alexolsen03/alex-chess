@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as styles from './Square.css';
+import './Square.css';
 import { Piece } from './../'
 
 class Square extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   toggleActiveSquare = () => {
     let {occupier, isActive, actions, file, rank, activeSquare, board, isPlayable} = this.props;

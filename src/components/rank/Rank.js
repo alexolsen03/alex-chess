@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Square } from './../';
-import * as styles from './Rank.css';
+import './Rank.css';
 
 class Rank extends Component {
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     let { offset, rank, activeSquare, actions, board, isPlayable } = this.props;

@@ -17,7 +17,6 @@ export const initializeBoard = () => {
 };
 
 export const movePiece = (activePiece, toCoord, board) => {
-  const toPiece = board[toCoord];
   const prevPiece = board[activePiece];
 
   board[toCoord] = prevPiece;
